@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Screen extends JFrame {
+    JTextField num1;
+    JTextField num2;
+
 
     public Screen() {
 
@@ -21,29 +24,34 @@ public class Screen extends JFrame {
         jButton.setForeground(new Color(255, 255, 255));
         jButton.setBackground(new Color(9, 10, 9));
 
-
-        JButton jButton2 = new JButton("Clique aqui");
-        jButton2.setBounds(0, 0, 150, 70);
-        jButton2.setFont(new Font("Arial", Font.ITALIC,20));
-        jButton2.setForeground(new Color(255, 0, 0));
-        jButton2.setBackground(new Color(0, 182, 0));
-
         add(jButton);
-        add(jButton2);
+        jButton.addActionListener(this::actionButton);
 
-        jButton.addActionListener(this::outroteste);
-        jButton2.addActionListener(this::teste);
+        num1 = new JTextField();
+        num1.setBounds(100,100,100,100);
+        num1.setFont(new Font("Arial", Font.ITALIC,40));
+
+        add(num1);
+
+        num2 = new JTextField();
+        num2.setBounds(300,100,100,100);
+        num2.setFont(new Font("Arial", Font.ITALIC,40));
+
+        add(num2);
+
 
     }
 
-    private void teste(ActionEvent actionEvent) {
-        JOptionPane.showMessageDialog(null,
-                "Metodo", "teste", JOptionPane.WARNING_MESSAGE);
-    }
 
-    private void outroteste(ActionEvent actionEvent) {
+    private void actionButton(ActionEvent actionEvent) {
+
+        Integer numero1 = Integer.parseInt(num1.getText());
+        Integer numero2 = Integer.parseInt(num2.getText());
+
+        Integer soma = numero1 + numero2;
+
         JOptionPane.showMessageDialog(null,
-                "Metodo com dois botões", "teste", JOptionPane.WARNING_MESSAGE);
+                "A soma é: " + soma, "teste", JOptionPane.WARNING_MESSAGE);
     }
 
 
